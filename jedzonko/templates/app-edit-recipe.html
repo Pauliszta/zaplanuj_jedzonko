@@ -1,0 +1,68 @@
+{% extends "__base__.html" %}
+{% block title %}{% endblock title %}
+{% block content %}
+
+
+<div class="dashboard-content border-dashed p-3 m-4 view-height">
+
+    <div class="mt-4 ml-4 mr-4">
+        <div class="row border-bottom border-3">
+            <div class="col"><h3 class="color-header text-uppercase">Edycja
+                przepisu</h3></div>
+            <div class="col d-flex justify-content-end mb-2">
+                {% csrf_token %}
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <button type="submit"
+                                class="btn btn-color rounded-0 pt-0 pb-0 pr-4 pl-4">
+                            Zapisz
+                        </button>
+                    </form>
+            </div>
+        </div>
+
+        <table class="table borderless">
+            <tbody>
+                {% csrf_token %}
+                    <tr class="d-flex">
+                        <th scope="row" class="col-2">Nazwa Przepisu</th>
+                        <td class="col-7">
+                            <input class="w-100 p-1" name="new_name" value="{{ recipe.name }}" >
+                        </td>
+                    </tr>
+                    <tr class="d-flex">
+                        <th scope="row" class="col-2">Opis przepisu</th>
+                        <td class="col-7">
+                            <textarea class="w-100 p-1" name="new_description" rows="5"> {{ recipe.description }}</textarea>
+                        </td>
+                    </tr>
+                    <tr class="d-flex">
+                        <th scope="row" class="col-2">Czas przygotowania (minuty)</th>
+                        <td class="col-3">
+                            <input class="p-1" type="number" name="new_preparation_time" value="{{ recipe.preparation_time }}">
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+
+        <div class="row d-flex">
+            <div class="col-5 border-bottom border-3"><h3
+                    class="text-uppercase">Sposób przygotowania</h3></div>
+            <div class="col-2"></div>
+            <div class="col-5 border-bottom border-3"><h3
+                    class="text-uppercase">Składniki</h3></div>
+        </div>
+        <div class="row d-flex">
+            {% csrf_token %}
+            <div class="col-5 p-4">
+                <textarea class="w-100 p-1" rows="10" name="new_preparing"> {{ recipe.preparing }}</textarea>
+            </div>
+            <div class="col-2"></div>
+            {% csrf_token %}
+            <div class="col-5 p-4">
+                <textarea class="w-100 p-1" rows="10" name="new_ingredients">{{ recipe.ingredients }}</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

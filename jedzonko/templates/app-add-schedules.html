@@ -1,0 +1,60 @@
+<form action="" method="POST">
+{% extends "__base__.html" %}
+{% block content %}
+
+{% csrf_token %}
+
+
+<div class="dashboard-content border-dashed p-3 m-4 view-height">
+
+    <div class="row border-bottom border-3 p-1 m-1">
+        <div class="col noPadding">
+            <h3 class="color-header text-uppercase">NOWY PLAN</h3>
+        </div>
+
+
+        <div class="col d-flex justify-content-end mb-2">
+            <button type="submit" href="plan/<id>/" class="btn btn-color rounded-0 m-1">
+                        Zapisz
+            </button>
+            <a href="/plan/list/" class="btn btn-success rounded-0 m-1">
+                Powrót
+            </a>
+        </div>
+    </div>
+
+    <h5 style="color: teal">
+        {{ message }}
+    </h5>
+
+    <div class="schedules-content">
+        <form>
+            <div class="form-group row">
+                <label for="planName"
+                       class="col-sm-2 label-size col-form-label">
+                    Nazwa planu
+                </label>
+                <div class="col-sm-10">
+                    <input type="text" name="name" class="form-control"
+                           placeholder="Nazwa planu">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="planDescription"
+                       class="col-sm-2 label-size col-form-label">
+                    Opis planu
+                </label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" name="description" rows="5"
+                              placeholder="Opis plany"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+    </form>
+
+{% endblock content %}
+
+{% block title %}{% endblock %}
